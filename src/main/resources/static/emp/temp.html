@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>部门管理</title>
+
+  <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+  <meta http-equiv="description" content="this is my page">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  <link rel="stylesheet" type="text/css" href="../reset.css">
+  <link rel="stylesheet" type="text/css" href="../main.css">
+  <script type="text/javascript" src="../jquery-1.8.3.min.js"></script>
+  <!--	<script type="text/javascript" src="../../js/layer/layer.js"></script>-->
+
+  <style type="text/css">
+
+
+  </style>
+
+  <script type="text/javascript">
+
+    function del(){
+      var result = window.confirm("确认要删除吗?");
+      if(true == result){
+        alert("删除成功");
+      }
+    }
+
+  </script>
+</head>
+
+<body>
+<h1 class="title">首页  &gt;&gt;员工管理 </h1>
+
+<div class="add">
+  <a href="/toAddTemp" target="contentPage"><img alt="" src="/add.png" width="18px" height="18px">添加员工</a>
+</div>
+
+<table class="deptInfo">
+  <tr class="titleRow">
+    <td>员工编号</td>
+    <td>员工姓名</td>
+    <td>部门编号</td>
+    <td>性别</td>
+    <td>学历</td>
+    <td>邮箱</td>
+    <td>电话</td>
+<!--    <td>入职时间</td>-->
+<!--    <td>创建时间</td>-->
+    <td>操作</td>
+  </tr>
+  <tr data-th-each="temp : ${tEmpMappers}">
+    <td data-th-text="${temp.empNo}">...</td>
+    <td data-th-text="${temp.empName}">...</td>
+    <td data-th-text="${temp.empDeptId}">...</td>
+    <td data-th-text="${temp.empSex}">...</td>
+    <td data-th-text="${temp.empEducation}">...</td>
+    <td data-th-text="${temp.empEmail}">...</td>
+    <td data-th-text="${temp.empPhone}">...</td>
+<!--    <td data-th-text="${temp.empEntryTime}">...</td>-->
+<!--    <td data-th-text="${temp.empCreateTime}">...</td>-->
+    <td><a th:href="@{/delTemp(empId=${temp.empId})}">删除</a>
+      <a th:href="@{/toUpDept(empId=${temp.empId})}">修改</a> </td>
+  </tr>
+</table>
+</body>
+</html>
