@@ -24,9 +24,5 @@
     <select id="selectDept" resultMap="deptMap">
         select * from t_dept where dept_id = #{deptId}
     </select>
-<!--    查询部门名称和id-->
-    <select id="selectByDeptName" resultMap="deptMap">
-        select dept_id,dept_name from t_dept
-    </select>
 
 </mapper>

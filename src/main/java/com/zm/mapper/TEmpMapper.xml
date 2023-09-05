@@ -17,10 +17,12 @@
         <result property="empCreateTime" column="emp_create_time"/>
     </resultMap>
 
-
-
     <!--    查询-->
     <select id="queryAll" resultMap="tempMap">
         select * from t_emp
+    </select>
+<!--    根据id查询-->
+    <select id="selectByEmpId" resultMap="tempMap">
+        select * from t_emp where emp_id = #{empId}
     </select>
 </mapper>

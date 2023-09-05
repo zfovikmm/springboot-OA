@@ -27,6 +27,5 @@ public interface TDeptMapper {
     //根据id查询
     List<TDept> selectDept(@Param("deptId") int deptId);
 
-    //查询 部门编号和部门名字
-    List<TDept> selectByDeptName();
+
 }

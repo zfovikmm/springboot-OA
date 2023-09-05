@@ -28,6 +28,33 @@
         }
 
     </style>
+    <!-- 在HTML页面底部或head标签中引入jQuery库 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script th:inline="javascript">
+        $(document).ready(function() {
+            // 使用AJAX请求从服务器获取部门数据
+            $.ajax({
+                url: '/toAddTemp', // 替换为真实的API端点
+                method: 'GET',
+                success: function(response) {
+                    // 成功获取部门数据后，处理返回的数据
+                    var departments = [[${departments}]]
+                    // 遍历部门数据，动态生成option元素添加到select元素中
+                    departments.forEach(function(department) {
+                        var option = $('<option></option>');
+                        option.val(department.deptId); // 设置option的值为部门编号
+                        option.text(department.deptName); // 设置option的显示文本为部门名称
+                        $('#empDeptId').append(option);
+                    });
+                },
+                error: function() {
+                    // 处理请求失败的情况
+                    console.log('Failed to retrieve department data.');
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -55,10 +82,14 @@
             <td>
                 部门编号:
             </td>
-
             <td>
-                <input type = "text" name="empDeptId" id="empDeptId"/>
+                <select name="empDeptId" id="empDeptId">
+                    <option value="">请选择部门</option>
+                </select>
             </td>
+<!--            <td>-->
+<!--                <input type = "text" name="empDeptId" id="empDeptId"/>-->
+<!--            </td>-->
         </tr>
 
         <tr>

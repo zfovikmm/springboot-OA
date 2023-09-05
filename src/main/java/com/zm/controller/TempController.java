@@ -40,8 +40,7 @@ public class TempController {
     @RequestMapping("toAddTemp")
     public String toAddTemp(Model model){
         List<TDept> tDepts = tDeptMapper.queryAllDept();
-        System.out.println(tDepts);
-        model.addAttribute("tDepts",tDepts);
+        model.addAttribute("departments",tDepts);
         return "emp/tempAdd";
     }
 
@@ -49,6 +48,24 @@ public class TempController {
     @RequestMapping("addTemp")
     public String addTemp(TEmp tEmp,Model model){
         tEmpMapper.addTemp(tEmp);
+        List<TEmp> tEmpMappers = tEmpMapper.queryAll();
+        model.addAttribute("tEmpMappers",tEmpMappers);
+        return "emp/temp";
+    }
+
+    //toUpDept
+    @RequestMapping("toUpEmp")
+    public String toUpEmp(int empId,Model model){
+        //获取要修改员工的信息
+        List<TEmp> tEmps = tEmpMapper.selectByEmpId(empId);
+        model.addAttribute("tEmps",tEmps);
+
+        return "emp/tempEdit";
+    }
+
+    @RequestMapping("upEmp")
+    public String upEmp(TEmp tEmp,Model model){
+        tEmpMapper.upEmp(tEmp);
         List<TEmp> tEmpMappers = tEmpMapper.queryAll();
         model.addAttribute("tEmpMappers",tEmpMappers);
         return "emp/temp";
