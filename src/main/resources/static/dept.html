@@ -23,7 +23,10 @@
 			var result = window.confirm("确认要删除吗?");
 			if(true == result){
 				alert("删除成功");
+			} else {
+				alert("取消删除");
 			}
+			return result;
 		}
 
 	</script>
@@ -49,7 +52,7 @@
 					<td data-th-text="${dept.deptName}">...</td>
 					<td data-th-text="${dept.deptLocation}">...</td>
 					<td data-th-text="${dept.deptPid}">...</td>
-					<td><a th:href="@{/delDept(deptId=${dept.deptId})}">删除</a>
+					<td><a th:href="@{/delDept(deptId=${dept.deptId})}" onclick="return del()">删除</a>
 						<a th:href="@{/toUpDept(deptId=${dept.deptId})}">修改</a> </td>
 				</tr>
          	</table>
