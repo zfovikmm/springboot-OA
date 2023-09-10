@@ -17,6 +17,7 @@
         <result property="empCreateTime" column="emp_create_time"/>
     </resultMap>
 
+
     <!--    查询-->
     <select id="queryAll" resultMap="tempMap">
         select * from t_emp

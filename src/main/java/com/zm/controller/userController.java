@@ -3,6 +3,7 @@ package com.zm.controller;
 
 
 import com.zm.mapper.TMyUserMapper;
+import com.zm.pojo.TMyUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -20,14 +21,12 @@ public class userController {
     @Autowired
     TMyUserMapper tMyUserMapper;
 
-
     @RequestMapping("login")
     public String login(String myAccount, String myPwd, Model model){
         //获取一个用户
         Subject subject = SecurityUtils.getSubject();
         //封装用户的登陆数据
         UsernamePasswordToken token = new UsernamePasswordToken(myAccount, myPwd);
-
         try {
             subject.login(token);
             return "main";
@@ -39,10 +38,17 @@ public class userController {
             return "index";
         }
     }
+
+    //权限管理
+    @RequestMapping("perlist")
+    public String perlist(){
+        return "permission/list";
+    }
+
+
     @RequestMapping("/noauth")
     @ResponseBody
     public String unauthorized(){
         return "未经授权无法访问此页面";
     }
-
 }

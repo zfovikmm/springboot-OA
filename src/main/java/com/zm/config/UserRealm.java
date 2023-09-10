@@ -16,6 +16,18 @@ public class UserRealm extends AuthorizingRealm {
     @Autowired
     TMyUserMapper tMyUserMapper;
 
+    //授权
+    @Override
+    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        //SimpleAuthorizationInfo是Shiro提供的一个授权信息的实现类。它用于存储用户的角色和权限信息。
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        Subject subject = SecurityUtils.getSubject();
+        TMyUser currentUser = (TMyUser) subject.getPrincipal();
+        info.addStringPermission("dept:add");
+
+        return info;
+    }
+
     //认证
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
@@ -31,19 +43,4 @@ public class UserRealm extends AuthorizingRealm {
         }
         return new SimpleAuthenticationInfo(tMyUser,tMyUser.getMyPwd(),"");
     }
-
-    //授权
-    @Override
-    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        //SimpleAuthorizationInfo是Shiro提供的一个授权信息的实现类。它用于存储用户的角色和权限信息。
-        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-        Subject subject = SecurityUtils.getSubject();
-        TMyUser currentUser = (TMyUser) subject.getPrincipal();
-
-        info.addStringPermission("addDept");
-
-        return info;
-    }
-
-
 }

@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 
 @Mapper
 public interface TMyUserMapper {
@@ -15,7 +17,7 @@ public interface TMyUserMapper {
     Integer login(@Param("myAccount") String myAccount, @Param("myPwd")String myPwd);
 
     //认证登录
-    @Select("select * from oa.t_my_user where my_account =#{myAccount}")
+   // @Select("select * from oa.t_my_user where my_account =#{myAccount}")
     TMyUser queryUserName(@Param("myAccount") String myAccount);
 
 

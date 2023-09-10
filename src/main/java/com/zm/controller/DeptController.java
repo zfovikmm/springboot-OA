@@ -2,6 +2,7 @@ package com.zm.controller;
 
 import com.zm.mapper.TDeptMapper;
 import com.zm.pojo.TDept;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ public class DeptController {
 
     //删除
     @RequestMapping("delDept")
+    @RequiresPermissions("dept:del")
     public String delDept(int deptId,Model model){
 
         int i = tDeptMapper.delDept(deptId);
@@ -41,6 +43,7 @@ public class DeptController {
 
     //添加
     @RequestMapping("addDept")
+    @RequiresPermissions("dept:add")
     public String addDept(TDept tDept,Model model){
         int i = tDeptMapper.addDept(tDept);
         List<TDept> tDepts = tDeptMapper.queryAllDept();

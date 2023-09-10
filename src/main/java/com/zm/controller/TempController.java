@@ -66,6 +66,7 @@ public class TempController {
     @RequestMapping("upEmp")
     public String upEmp(TEmp tEmp,Model model){
         tEmpMapper.upEmp(tEmp);
+
         List<TEmp> tEmpMappers = tEmpMapper.queryAll();
         model.addAttribute("tEmpMappers",tEmpMappers);
         return "emp/temp";

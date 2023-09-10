@@ -34,6 +34,8 @@ public class ShiroConfig {
         //跳转到未授权页面
 //        filterMap.put("/user/add","perms[user:add]");
 //        filterMap.put("/user/update","perms[user:update]");
+        filterMap.put("/addDept","perms[dept:add]");
+        filterMap.put("/delDept","perms[dept:del]");
         //bean.setFilterChainDefinitionMap(filterMap) 是将过滤器链的定义映射设置为 filterMap。这个方法的作用是配置 Shiro 框架中的 URL 过滤器链。
         //通过这个方法，您可以定义哪些 URL 需要经过身份验证（认证）和授权才能访问。
         //setFilterChainDefinitionMap() 方法的调用将过滤器链定义映射设置到 ShiroFilterFactoryBean 实例中，该实例负责处理 URL 路径与权限之间的映射关系。

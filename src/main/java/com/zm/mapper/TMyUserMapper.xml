@@ -3,4 +3,17 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zm.mapper.TMyUserMapper">
+    <select id="queryUserName" resultMap="tMyUserMap">
+        select * from t_my_user where my_account =#{myAccount}
+    </select>
+    <resultMap id="tMyUserMap" type="com.zm.pojo.TMyUser">
+        <id column="my_id" property="myId"/>
+        <result column="my_id" property="myId"/>
+        <result column="my_account" property="myAccount"/>
+        <result column="my_pwd" property="myPwd"/>
+        <result column="my_emp_no" property="myEmpNo"/>
+        <result column="my_role_id" property="myRoleId"/>
+        <result column="my_create_time" property="myCreateTime"/>
+    </resultMap>
+
 </mapper>
