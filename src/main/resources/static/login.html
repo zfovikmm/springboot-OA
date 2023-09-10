@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <title>用户登录</title>
 
@@ -22,6 +22,7 @@
      	  		某某OA管理系统
      	</div>
      	<div style="border:1px solid red; width:400px;height:30px; line-height:30px;" id="message">提示消息</div>
+		 <p th:text="${msg}" style="color: red;"></p>
 		<form action="oa/login" method="post">
      	  <table id="loginTable" style="margin-top:0px;">
      	  		<tr>

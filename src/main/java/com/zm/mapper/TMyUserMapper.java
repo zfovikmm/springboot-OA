@@ -14,5 +14,9 @@ public interface TMyUserMapper {
     @Select("select * from oa.t_my_user where my_account =#{myAccount} and my_pwd = #{myPwd}")
     Integer login(@Param("myAccount") String myAccount, @Param("myPwd")String myPwd);
 
+    //认证登录
+    @Select("select * from oa.t_my_user where my_account =#{myAccount}")
+    TMyUser queryUserName(@Param("myAccount") String myAccount);
+
 
 }
