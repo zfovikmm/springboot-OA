@@ -21,8 +21,9 @@
     <div id = "title">
         某某OA管理系统
     </div>
-    <div style="border:1px solid red; width:400px;height:30px; line-height:30px;" id="message">提示消息</div>
-    <p th:text="${msg}" style="color: red;"></p>
+    <div  id="message">
+        <p th:text="${msg}" style="color: red;"/>
+    </div>
     <form action="/login" method="post">
         <table id="loginTable" style="margin-top:0px;">
             <tr>
