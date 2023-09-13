@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zm.mapper.RoleMapper">
+
+    <resultMap id="roleMap" type="com.zm.pojo.Role">
+        <id property="rid" column="rid"></id>
+        <result property="rid" column="rid"></result>
+        <result property="name" column="name"></result>
+        <result property="sn" column="sn"></result>
+        <collection property="permission" ofType="com.zm.pojo.Permission">
+            <id property="pid" column="pid"></id>
+            <result property="fun" column="fun"></result>
+            <result property="resource" column="resource"></result>
+        </collection>
+    </resultMap>
+
+    <select id="queryAllRole" resultMap="roleMap">
+        select a.rid,a.name,c.fun
+        from role as a
+        join role_permission as b on a.rid = b.role_id
+        join permission as c on b.permission_id = c.pid
+    </select>
+
+
+</mapper>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>角色管理</title>
+
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="../reset.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    <script type="text/javascript" src="../jquery-1.8.3.min.js"></script>
+    <!--	<script type="text/javascript" src="../../js/layer/layer.js"></script>-->
+
+    <style type="text/css">
+
+
+    </style>
+
+    <script type="text/javascript">
+
+        function del(){
+            var result = window.confirm("确认要删除吗?");
+            if(true == result){
+                alert("删除成功");
+            }else {
+                alert("取消删除");
+            }
+            return result;
+        }
+
+    </script>
+</head>
+
+<body>
+<h1 class="title">首页  &gt;&gt;角色管理 </h1>
+
+<table class="deptInfo">
+    <tr class="titleRow">
+        <td>角色编号</td>
+        <td>角色姓名</td>
+        <td>员工列表</td>
+        <td>员工删除</td>
+        <td>员工新增</td>
+        <td>员工编辑</td>
+        <td>操作</td>
+    </tr>
+    <tr data-th-each="role : ${roles}">
+        <td data-th-text="${role.rid}">...</td>
+        <td data-th-text="${role.name}">...</td>
+<!--        <td data-th-text="${temp.empNo}">...</td>-->
+<!--        <td data-th-text="${temp.empName}">...</td>-->
+<!--        <td data-th-text="${temp.empDeptId}">...</td>-->
+<!--        <td data-th-text="${temp.empSex}">...</td>-->
+<!--        <td data-th-text="${temp.empEducation}">...</td>-->
+<!--        <td data-th-text="${temp.empEmail}">...</td>-->
+<!--        <td data-th-text="${temp.empPhone}">...</td>-->
+        <!--    <td data-th-text="${temp.empEntryTime}">...</td>-->
+        <!--    <td data-th-text="${temp.empCreateTime}">...</td>-->
+        <td><a th:href="@{/te(roleId=${role.rid})}">修改</a> </td>
+    </tr>
+</table>
+</body>
+</html>
